@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<div th:replace="/fragments/header :: header" />
+<div th:replace="fragments/header :: header" />
 </head>
 
 <body>
 	<div class="home-panel">
 		<div class="menu-panel">
-			<div th:replace="/fragments/menu :: menu"></div>
+			<div th:replace="fragments/menu :: menu"></div>
 		</div>
 		<div class="products-panel">
 			<div class="alert alert-success" role="alert" th:if="${trxid}">
@@ -43,6 +43,6 @@
 		</div>
 	</div>
 
-	<div th:replace="/fragments/footer :: footer" />
+	<div th:replace="fragments/footer :: footer" />
 </body>
 </html>
