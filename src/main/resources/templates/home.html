@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<div th:replace="/fragments/header :: header" />
+</head>
+
+<body>
+	<div class="home-panel">
+		<div class="menu-panel">
+			<div th:replace="/fragments/menu :: menu"></div>
+		</div>
+		<div class="products-panel">
+			<div class="alert alert-success" role="alert" th:if="${trxid}">
+			  Order have been created, your transaction id is #[[${trxid}]]
+			</div>
+		
+			<div class="row">
+				
+				<div class="col-3 p-3" th:each="product: ${products}">
+					<div class="card" style="width: 18rem;">
+					  <img class="card-img-top" th:src="${product.imageUrl}" alt="Card image cap">
+					  <div class="card-body">
+					    <h5 class="card-title"><span th:text="${product.itemName}"></span></h5>
+					    <p class="card-text"><span th:text="${product.description}"></span></p>
+					    <h5>$[[${product.itemUnitPrice}]]</h5>
+					    <a th:href="@{'/shopping/add/{id}?type={type}'(id=${product.id}, type=${param.type})}" class="btn btn-primary">Add to Cart</a>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="carts-panel">
+			<h2 class="text-center">In Cart</h2>
+			<div class="cart-block" th:each="product : ${carts.entrySet()}">
+				<span class="cart-item">[[${product.getValue().itemName}]] x <span class="font-weight-bold">[[${product.getValue().qty}]]</span></span>
+				<span class="cart-price">$[[${product.getValue().totalAmount}]]</span>
+				<span class="cart-delete"><a th:href="@{'/shopping/delete/{id}?type={type}'(id=${product.getValue().id}, type=${param.type})}">Delete</a></span>
+			</div>
+			
+			<div class="checkout-block"><a th:href="@{'/shopping/checkout'}" class="btn btn-success w-100">Checkout</a></div>
+			
+		</div>
+	</div>
+
+	<div th:replace="/fragments/footer :: footer" />
+</body>
+</html>

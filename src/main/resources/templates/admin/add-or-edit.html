@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<div th:replace="/fragments/header :: header" />
+</head>
+
+<body>
+	<div class="container my-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-10">
+                    <form action="#" th:action="@{/admin/addOrUpdateProduct}" th:object="${product}"
+                                                                       method="post">
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label for="name" class="col-form-label">Item No.</label> 
+                                <input type="text" th:field="*{itemNo}" class="form-control"
+                                            id="itemNo" placeholder="Item No." />
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="name" class="col-form-label">Item Type</label> 
+                                <input type="text" th:field="*{itemType}" class="form-control"
+                                            id="itemType" placeholder="Item Type" />
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="email" class="col-form-label">Item Name</label> 
+                                <input type="text" th:field="*{itemName}" class="form-control"
+                                            id="itemName" placeholder="Type Name" />
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="email" class="col-form-label">Item Unit Price</label> 
+                                <input type="text" th:field="*{itemUnitPrice}" class="form-control"
+                                            id="itemUnitPrice" placeholder="Unit Price" />
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="email" class="col-form-label">Description</label> 
+                                <input type="text" th:field="*{description}" class="form-control"
+                                            id="description" placeholder="Description" />
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="email" class="col-form-label">Image Url</label> 
+                                <input type="text" th:field="*{imageUrl}" class="form-control"
+                                            id="imageUrl" placeholder="Image Url" />
+                            </div>
+ 
+                            <div class="col-md-6">
+                                <input type="submit" class="btn btn-primary" value=" Submit ">
+                            </div>
+ 
+                            <input type="hidden" id="id" th:field="*{id}">
+     
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div th:replace="/fragments/footer :: footer" />
+</body>
+</html>
